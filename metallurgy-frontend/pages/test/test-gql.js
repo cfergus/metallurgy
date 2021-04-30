@@ -5,8 +5,12 @@ import { withApollo } from '../../lib/withApollo';
 
 const GET_HEAT_TREATS = gql`
 query getHeatTreats {
-  heat_treat {
+  hardening_heat_treat {
     id
+    samples {
+      toughness
+      hardness
+    }
   }
 }`;
 
@@ -16,15 +20,9 @@ const HeatTreatList = props => {
 
   console.log( heatTreats )
   
-  // let listItems = []
-
-  // if( heatTreats ){
-
-  //   listItems = heatTreats.map( ht => {
-  //     <p>{ht.id}</p>
-  //   })
-  // }
+  
   const listItems = heatTreats.map( ht => {
+    // TODO : Should create unique key per item in list
     return( 
       <p>Heat treat : id={ht.id}</p>
     )
@@ -57,7 +55,7 @@ const HeatTreatQuery = () => {
     console.error(error);
     return <div>Error!</div>;
   }
-  return <HeatTreatList heatTreats={data.heat_treat} />;
+  return <HeatTreatList heatTreats={data.hardening_heat_treat} />;
 };
 
 export default withApollo()(HeatTreatQuery);

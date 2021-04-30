@@ -23,3 +23,15 @@ The API - a means of communication with the database. The frontend talks to the 
 
 The database - the structured location for data storage.
 
+# Development
+
+## Local deploy
+
+From the root directory, run `docker-compose -f docker/docker-compose.dev.yml up`
+
+## Sample data
+
+To generate some sample data for demos and development, run:
+* `cd hasura/scripts/node`
+* `node generate-sample-data.js`
+This is a bit sloppy right now - you can run it once on an empty db. If steel already exists, it will fail.

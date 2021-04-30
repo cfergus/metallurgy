@@ -30,10 +30,12 @@ const resetTokenLink = onError(({ networkError }) => {
   }
 })
 
+const HASURA_HTTP_URL = process.env.HASURA_HTTP_URL
+const HASURA_WSS_URL = process.env.HASURA_WSS_URL
+
 const createHttpLink = (headers) => {
   const httpLink = new HttpLink({
-    // uri: 'https://hasura.io/learn/graphql',
-    uri: 'http://localhost:8080/v1/graphql',
+    uri: HASURA_HTTP_URL,
     // credentials: 'include',
     headers, // auth token is fetched on the server side
     fetch,
@@ -43,7 +45,7 @@ const createHttpLink = (headers) => {
 
 const createWSLink = () => {
   return new WebSocketLink(
-    new SubscriptionClient('wss://localhost:8080/v1/graphql', {
+    new SubscriptionClient(HASURA_WSS_URL, {
       lazy: true,
       reconnect: true,
       connectionParams: async () => {

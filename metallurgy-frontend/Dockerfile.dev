@@ -1,0 +1,21 @@
+FROM node:16
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Installing dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copying source files
+# COPY --chown=node:node . /usr/src/app
+# RUN chown -R node:node /usr/src/app
+# RUN ls -al /usr/src/app
+
+ENV PORT 3000
+
+ARG HASURA_HTTP_URL
+ARG HASURA_WSS_URL
+
+# Running the app
+CMD "npm" "run" "dev"

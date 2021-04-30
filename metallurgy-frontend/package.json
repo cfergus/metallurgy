@@ -28,13 +28,14 @@
     "apollo-link-http": "1.5.17",
     "apollo-link-ws": "1.0.20",
     "bootstrap": "3.4.1",
-    "graphql": "15.5.0",
+    "graphql": "14.3.1",
     "graphql-tag": "2.11.0",
     "isomorphic-unfetch": "3.0.0",
+    "recharts": "2.0.9",
     "next": "^10.0.7",
     "next-auth": "latest",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "sqlite3": "^5.0.2",
     "subscriptions-transport-ws": "0.9.16"
   }
