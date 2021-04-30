@@ -1,0 +1,10 @@
+table:
+  name: sample
+  schema: public
+object_relationships:
+- name: hardening_heat_treat
+  using:
+    foreign_key_constraint_on: hardening_heat_treat_id
+- name: steel
+  using:
+    foreign_key_constraint_on: steel_id

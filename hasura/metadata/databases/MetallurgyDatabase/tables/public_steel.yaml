@@ -1,0 +1,11 @@
+table:
+  name: steel
+  schema: public
+array_relationships:
+- name: samples
+  using:
+    foreign_key_constraint_on:
+      column: steel_id
+      table:
+        name: sample
+        schema: public

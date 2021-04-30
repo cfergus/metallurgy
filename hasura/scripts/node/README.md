@@ -1,0 +1,1 @@
+These are scripts specific to this application. They are not part of the Hasura ecosystem.

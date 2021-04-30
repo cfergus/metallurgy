@@ -1,0 +1,11 @@
+table:
+  name: hardening_heat_treat
+  schema: public
+array_relationships:
+- name: samples
+  using:
+    foreign_key_constraint_on:
+      column: hardening_heat_treat_id
+      table:
+        name: sample
+        schema: public

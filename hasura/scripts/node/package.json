@@ -1,0 +1,14 @@
+{
+  "name": "metal-scripts",
+  "version": "1.0.0",
+  "description": "These are scripts specific to this application. They are not part of the Hasura ecosystem.",
+  "main": "generate-sample-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-fetch": "2.6.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
