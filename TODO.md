@@ -24,18 +24,27 @@ Steel
  
 Equations, such as cementite https://knifesteelnerds.com/2018/11/19/steel-edge-retention/
 
-### Actions
+# Actions
 
 Connect up test gql to graph. Make sure it stays reactive.
+  Might need to use state : https://www.apollographql.com/docs/tutorial/local-state/
+  Might need to redo the dang dependencies: https://www.apollographql.com/blog/getting-started-with-apollo-client-in-next-js/
 
+Figure out env vars
+  .env.local?
+  docker-compose -> docker
+  build, or runtime? In dev vs prod
 
 Updates
 * frontend - warn  - React 17.0.1 or newer will be required to leverage all of the upcoming features in Next.js 11. Read more: https://err.sh/next.js/react-version
 * Use hasura 2 when released
 
-## Vizualizations
+Production build
+  https://nextjs.org/docs/deployment
 
-### Common charts
+# Vizualizations
+
+## Common charts
 
 X: Tempering temp
 Y: Toughness
@@ -57,18 +66,13 @@ Y: toughness
 
 Radar chart of characteristics relative to context
 
-### Features
+## Features
 
 Trend lines using spline etc (line fit for scatter)
 
 Filtering based on selectors, context, search, etc
 
-### Notes
-
-Using guide from https://wattenberger.com/blog/react-and-d3
-  alternative - trying regraph. Ex: https://medium.com/@martin.crabtree/react-the-basics-of-data-visualization-using-recharts-14c01102efe3
-
-## Filtering
+# Filtering
 
 For various views, how to filter to only the information of interest. Examples:
 * Stainless
@@ -79,9 +83,13 @@ May want to compare A vs B as groups. Use colors to distinguish a series.
 
 Suggest tag arrays for steel types
 
-## Input
+# Input
 
 For start, use hasura console
 Later, could try to recreate console style? Ex: https://github.com/hasura/graphql-engine/tree/master/console/src/components/Services/Data/TableInsertItem
 
 Otherwise, a custom form
+
+# DEV ideas
+
+Typescript for frontend? https://nextjs.org/docs/basic-features/typescript

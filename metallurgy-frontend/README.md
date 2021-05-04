@@ -1,132 +1,70 @@
-README is currently copied from next auth example project
+# Getting Started with Create React App
 
-# NextAuth.js Example
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[next-auth-example.now.sh](https://next-auth-example.now.sh)
+## Available Scripts
 
-## About this project
+In the project directory, you can run:
 
-This is an example of how to use [NextAuth.js](https://next-auth.js.org) library to add authentication to a [Next.js](https://nextjs.org) application.
+### `yarn start`
 
-## About NextAuth.js
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-NextAuth.js is an easy to implement, full-stack (client/server) open source authentication library designed for [Next.js](https://nextjs.org) and [Serverless](https://now.sh).
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-Go to [next-auth.js.org](https://next-auth.js.org) for more information and documentation.
+### `yarn test`
 
-*NextAuth.js is not associated with Vercel or Next.js.*
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Getting started
+### `yarn build`
 
-### 1. Clone the repository and install dependancies
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-git clone https://github.com/nextauthjs/next-auth-example.git
-cd next-auth-example
-npm i
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### 2. Configure your local environment
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Copy the .env.local.example file in this directory to .env.local (which will be ignored by Git):
+### `yarn eject`
 
-```
-cp .env.local.example .env.local
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc).
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-#### Database configuration
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-A database is needed to persist user accounts and to support email sign in, but you can still use NextAuth.js for authentication without one by using OAuth for authentication. If you do not specify a database, JSON Web Tokens will be enabled by default.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-You can skip configuring a database and come back to it later if you want.
+## Learn More
 
-When configuring your database you should also install an appropriate node_module.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-* **SQLite**
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-  Install module:
-  `npm i sqlite3`
+### Code Splitting
 
-  Database URI:
-  `sqlite://localhost/:memory:?synchronize=true`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-* **MySQL**
+### Analyzing the Bundle Size
 
-  Install module:
-  `npm i mysql`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-  Database URI:
-  `mysql://username:password@127.0.0.1:3306/database_name?synchronize=true`
+### Making a Progressive Web App
 
-* **Postgres**
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-  Install module:
-  `npm i pg`
+### Advanced Configuration
 
-  Database URI:
-  `postgres://username:password@127.0.0.1:5432/database_name?synchronize=true`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-* **MongoDB**
+### Deployment
 
-  Install module:
-  `npm i mongodb`
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-  Database URI:
-  `mongodb://username:password@127.0.0.1:27017/database_name?synchronize=true`
+### `yarn build` fails to minify
 
-Notes:
-
-* The example .env specifies an in-memory SQLite database that does not persist data.
-* SQLite is suitable for development / testing but not for production.
-* The option `?synchronize=true` automatically syncs schema changes to the database. It should not be used in production as may result in data loss if there are changes to the schema or to NextAuth.js
-* You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...nextauth].js` instead of a database URL / connection string.
-
-### 3. Configure authentication providers
-
-* Review and update options in `pages/api/auth/[...nextauth].js` as needed.
-
-* When setting up OAuth, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
-
-  e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
-
-  A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/configuration/providers
-
-* You can also choose to specify an SMTP server for passwordless sign in via email.
-
-### 4. Start the application
-
-To run your site locally, use:
-
-```
-npm run dev
-```
-
-To run it it production mode, use:
-
-```
-npm build
-npm start
-```
-
-### 5. Configuring for production
-
-You must set the NEXTAUTH_URL environment variable with the URL of your site, before deploying to production.
-
-e.g. `NEXTAUTH_URL=https://example.com`
-
-To do this in on Vercel, you can use the [Vercel project dashboard](https://vercel.com/dashboard) or the `vc env` command:
-
-    vc env add NEXTAUTH_URL production
-
-Be sure to also set environment variables for the Client ID and Client Secret values for all your authentication providers.
-
-
-# Development Notes
-
-Using: https://hasura.io/blog/next-js-jwt-authentication-with-next-auth-and-integration-with-hasura/
-as a basis, mostly for auth
-
-For gql/apollo:
-https://hasura.io/learn/graphql/nextjs-fullstack-serverless/apollo-client/
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

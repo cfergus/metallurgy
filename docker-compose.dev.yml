@@ -27,21 +27,28 @@ services:
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
 
-  frontend:
-    depends_on:
-    - "graphql-engine"
-    ports:
-      - 3000:3000
-    build:
-      context: ./metallurgy-frontend
-      dockerfile: Dockerfile.dev
-    environment:
-      # Note - these are in the environment for DEV, but need to be in the build.args for production
-      - HASURA_HTTP_URL=http://graphql-engine:8080/v1/graphql
-      - HASURA_WSS_URL=wss://graphql-engine:8080/v1/graphql
-    volumes:
-      - ./metallurgy-frontend:/usr/src/app
-      - /usr/src/app/node_modules
+  # frontend:
+
+
+
+
+    # depends_on:
+    # - "graphql-engine"
+    # ports:
+    #   - 3000:3000
+    # build:
+    #   context: ./metallurgy-frontend
+    #   dockerfile: Dockerfile.dev
+    #   args:
+    #     - HASURA_HTTP_URL=http://graphql-engine:8080/v1/graphql
+    #     - HASURA_WSS_URL=ws://graphql-engine:8080/v1/graphql
+    # environment:
+    #   # Note - these are in the environment for DEV, but need to be in the build.args for production
+    #   - HASURA_HTTP_URL=http://graphql-engine:8080/v1/graphql
+    #   - HASURA_WSS_URL=ws://graphql-engine:8080/v1/graphql
+    # volumes:
+    #   - ./metallurgy-frontend:/usr/src/app
+    #   - /usr/src/app/node_modules
       # - /usr/src/app/.next
     # env_file:
     #   - ../metallurgy-frontend/.env

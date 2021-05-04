@@ -27,7 +27,7 @@ The database - the structured location for data storage.
 
 ## Local deploy
 
-From the root directory, run `docker-compose -f docker/docker-compose.dev.yml up`
+From the root directory, run `docker-compose -f docker-compose.dev.yml up`
 
 ## Sample data
 

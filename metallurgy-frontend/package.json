@@ -1,42 +1,42 @@
 {
   "name": "metallurgy-frontend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
-  "description": "User interface for exploring metal samples and their properties, especially in the context of bladesmithing",
-  "repository": "",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
-  "main": "",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
-  "author": "Colin Fergus <cutleafstudios@gmail.com>",
-  "contributors": [
-  ],
-  "license": "ISC",
   "dependencies": {
-    "@apollo/react-hooks": "3.1.5",
-    "@apollo/react-ssr": "3.1.5",
-    "apollo-cache-inmemory": "1.6.6",
-    "apollo-client": "2.6.10",
-    "apollo-link-context": "1.0.20",
-    "apollo-link-error": "1.1.13",
-    "apollo-link-http": "1.5.17",
-    "apollo-link-ws": "1.0.20",
-    "bootstrap": "3.4.1",
-    "graphql": "14.3.1",
-    "graphql-tag": "2.11.0",
-    "isomorphic-unfetch": "3.0.0",
-    "recharts": "2.0.9",
-    "next": "^10.0.7",
-    "next-auth": "latest",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "sqlite3": "^5.0.2",
-    "subscriptions-transport-ws": "0.9.16"
+    "@apollo/client": "^3.3.16",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "graphql": "^15.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "recharts": "^2.0.9",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
