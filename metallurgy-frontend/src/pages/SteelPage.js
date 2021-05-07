@@ -1,0 +1,106 @@
+import { useQuery, gql } from "@apollo/client";
+import { Card, CardContent, Grid, makeStyles, Typography } from "@material-ui/core";
+import { useParams } from "react-router-dom";
+import ToughnessHardnessChart from "../components/charts/ToughnessHardness";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(4),
+  },
+  row: {
+    display: 'flex',
+    margin: '0 -15px',
+  },
+  info: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
+  loaderWrap: {
+    width: '100%',
+    height: '100%',
+    minHeight: 'calc(100vh - 64px)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
+
+export default function SteelPage() {
+
+  const classes = useStyles();
+
+  let { id } = useParams();
+
+  // TODO : query to get steel by name
+  const STEEL_QUERY = gql`
+      query getSteels($steelName: String!) {
+        steel(where: {name: {_eq: $steelName}}) {
+          name
+          id
+          samples {
+            id
+            hardness
+            toughness
+          }
+        }
+      }
+    `
+
+  const { loading, error, data } = useQuery(
+    STEEL_QUERY,
+    { 
+      skip: !id || id === '', // If the id has not yet been resolved, wait to issue the query
+      variables: { steelName: id } 
+    }
+  );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error while retrieving data</p>;
+
+  const steel = data.steel[0]
+
+  return (
+    <div className={classes.root}>
+      
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {steel.name}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {steel.name} description
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6}>
+          <Card>
+            <CardContent>
+              History? 
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6}>
+          <Card>
+            <CardContent>
+              Tags?
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <ToughnessHardnessChart data={data}></ToughnessHardnessChart>
+            </CardContent>
+          </Card>
+
+        </Grid>
+
+      </Grid>
+    </div>
+  )
+
+}

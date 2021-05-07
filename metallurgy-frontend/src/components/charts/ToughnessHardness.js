@@ -18,6 +18,18 @@ export default function ToughnessHardnessChart( { data } ) {
 
   console.log( unrolledData )
 
+  /*
+  For font, consider global CSS
+  https://github.com/recharts/recharts/issues/628
+  svg.recharts-surface tspan {
+    font-size: 0.8rem !important;
+    color: black !important;
+    font-family:  Roboto;
+  }
+
+
+  */
+
   // <ResponsiveContainer width={700} height="80%">
   return (
     <div>
@@ -33,20 +45,18 @@ export default function ToughnessHardnessChart( { data } ) {
           type="number"
           domain={['auto', 'auto']}
           tick={{ fill: "#212121" }} tickLine={{ stroke: "#000000" }}
+          fontFamily={'Roboto, sans-serif'}
           unit="ft/lb">
-          <Label value="Toughness" position="bottom" offset={0} />
+          <Label value="Toughness" position="bottom" offset={0} fontFamily={'Roboto, sans-serif'} />
         </XAxis>
-        <YAxis dataKey="hardness" unit="HRC" domain={['auto','auto']}>
-          <Label value="Hardness" position="left" angle="-90" />
+        <YAxis dataKey="hardness" unit="HRC" domain={['auto','auto']} fontFamily={'Roboto, sans-serif'}>
+          <Label value="Hardness" position="left" angle="-90" fontFamily={'Roboto, sans-serif'}/>
         </YAxis>
         <Tooltip />
         <Legend layout="vertical" verticalAlign="top" align="right" margin={ {left: 12 } } />
-        {/* <Scatter name="1084" data={steel1084} fill="#8884d8" />
-        <Scatter name="AEBL" data={steelAEBL} fill="#cccccc" line={true} lineType="fitting" /> */}
 
         {data.steel.map(asScatterSeries)}
 
-        {/* <Scatter name="all" data={unrolledData} stroke="#000055"  /> */}
       </ScatterChart>
     </div>
   )
@@ -57,10 +67,10 @@ export default function ToughnessHardnessChart( { data } ) {
     return <Scatter name={steel.name} data={steel.samples} fill={'#' + fillColor} line={true} lineType="fitting" />
   }
   /*
-        Some alternatives
-         domain={['dataMin', 'dataMax']}
-         unit="°F" (on xaxis)
-         <Legend layout="vertical" wrapperStyle="right" />
-         https://recharts.org/en-US/examples/LegendEffectOpacity - to help guide a user to the chart
+  Some alternatives
+    domain={['dataMin', 'dataMax']}
+    unit="°F" (on xaxis)
+    <Legend layout="vertical" wrapperStyle="right" />
+    https://recharts.org/en-US/examples/LegendEffectOpacity - to help guide a user to the chart
   */
 }

@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import WelcomePage from './pages/WelcomePage';
+import HelpPage from './pages/HelpPage';
+import SteelsPage from './pages/SteelsPage';
+import SteelPage from './pages/SteelPage';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8080/v1/graphql',
@@ -16,7 +20,19 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <BrowserRouter>
+        <App>
+          <Switch>
+            <Redirect exact from="/" to="/welcome" />
+            <Route key="welcome" exact path="/welcome" component={WelcomePage} />
+            <Route key="help" path="/help" component={HelpPage} />
+            <Route key="steels" exact path="/steels" component={SteelsPage} />
+            <Route key="steel" path="/steels/:id" component={SteelPage} />
+            {/* <Route key="table" path="/user/:id" component={UsersPage} /> */}
+            <Redirect to="/welcome" />
+          </Switch>
+        </App>
+      </BrowserRouter>
     </ApolloProvider>    
   </React.StrictMode>,
   document.getElementById('root')

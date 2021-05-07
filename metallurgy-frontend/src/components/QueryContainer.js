@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
-import ToughnessHardnessChart from "./charts/toughness_hardness";
-import GenericTable from "./tables/generic_table";
+import ToughnessHardnessChart from "./charts/ToughnessHardness";
+import GenericTable from "./tables/GenericTable";
 
 
 export default function QueryContainer() {

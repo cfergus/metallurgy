@@ -42,6 +42,10 @@ Updates
 Production build
   https://nextjs.org/docs/deployment
 
+Material UI
+  https://github.com/mui-org/material-ui/blob/master/docs/src/pages/getting-started/templates/dashboard/Dashboard.js
+  Example: https://material-ui.com/getting-started/templates/dashboard/
+
 # Vizualizations
 
 ## Common charts
@@ -65,6 +69,14 @@ X: hold time
 Y: toughness
 
 Radar chart of characteristics relative to context
+
+Samples by type
+
+## Tables
+
+Chemical composition
+
+tempering time
 
 ## Features
 

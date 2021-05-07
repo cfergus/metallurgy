@@ -1,3 +1,7 @@
+Some quick notes: 
+* Using AirBnB style guide, but not rigidly
+* Using https://github.com/mui-org/material-ui , with the dashboard example as a starting point, adapted using https://github.com/cube-js/cube.js/blob/master/examples/material-ui-dashboard/dashboard-app for routing and related add-ons
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
