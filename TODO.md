@@ -84,6 +84,8 @@ Trend lines using spline etc (line fit for scatter)
 
 Filtering based on selectors, context, search, etc
 
+Consistent color for steel, etc. UUID to color?
+
 # Filtering
 
 For various views, how to filter to only the information of interest. Examples:

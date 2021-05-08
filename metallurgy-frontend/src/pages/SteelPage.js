@@ -1,6 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import { Card, CardContent, Grid, makeStyles, Typography } from "@material-ui/core";
 import { useParams } from "react-router-dom";
+import TemperingHardnessChart from "../components/charts/TemperingHardness";
 import ToughnessHardnessChart from "../components/charts/ToughnessHardness";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +42,12 @@ export default function SteelPage() {
             id
             hardness
             toughness
+            hardening_heat_treat {
+              austenitization_hold_time
+              austenitization_temperature
+              temper_temperature
+              id
+            }
           }
         }
       }
@@ -79,26 +86,31 @@ export default function SteelPage() {
         <Grid item xs={6}>
           <Card>
             <CardContent>
-              History? 
+              History? Chemistry?
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={6}>
           <Card>
             <CardContent>
-              Tags?
+              Tags? Links to Articles?
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <Card>
             <CardContent>
               <ToughnessHardnessChart data={data}></ToughnessHardnessChart>
             </CardContent>
           </Card>
-
         </Grid>
-
+        <Grid item xs={6}>
+          <Card>
+            <CardContent>
+              <TemperingHardnessChart data={data}></TemperingHardnessChart>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     </div>
   )

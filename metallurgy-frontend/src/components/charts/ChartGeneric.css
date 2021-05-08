@@ -1,0 +1,7 @@
+svg.recharts-surface tspan {
+  font-size: 0.8rem !important;
+  color: black !important;
+  font-family:  Roboto;
+}
+
+/* TODO : Consider specific styling for axis labels, ticks, etc */

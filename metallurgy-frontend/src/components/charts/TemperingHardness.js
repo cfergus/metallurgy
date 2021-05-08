@@ -2,7 +2,7 @@ import { ScatterChart, Tooltip, CartesianGrid, XAxis, Label, YAxis, Scatter, Leg
 import './ChartGeneric.css'
 
 
-export default function ToughnessHardnessChart( { data } ) {
+export default function TemperingHardnessChart( { data } ) {
 
   const unrolledData = []
 
@@ -12,7 +12,7 @@ export default function ToughnessHardnessChart( { data } ) {
         id: sample.id,
         name: steel.name,
         hardness: sample.hardness,
-        toughness: sample.toughness
+        temperingTemperature: sample.hardening_heat_treat.temper_temperature,
       } )
     } )
   } )
@@ -25,12 +25,12 @@ export default function ToughnessHardnessChart( { data } ) {
       >
 
         <CartesianGrid stroke="#000000" strokeDasharray="3 3" />
-        <XAxis dataKey="toughness"
+        <XAxis dataKey="temperingTemperature"
           type="number"
           domain={['auto', 'auto']}
           tick={{ fill: "#212121" }} tickLine={{ stroke: "#000000" }}
-          unit="ft/lb">
-          <Label value="Toughness" position="bottom" offset={0} />
+          unit="°F">
+          <Label value="Tempering Temperature" position="bottom" offset={0} />
         </XAxis>
         <YAxis dataKey="hardness" unit="HRC" domain={['auto','auto']} >
           <Label value="Hardness" position="left" angle="-90" />
@@ -39,7 +39,8 @@ export default function ToughnessHardnessChart( { data } ) {
 
         {legend( data )}
         
-        {data.steel.map(asScatterSeries)}
+        {allSeries(data)}
+        
 
       </ScatterChart>
     </ResponsiveContainer>
@@ -53,13 +54,32 @@ export default function ToughnessHardnessChart( { data } ) {
     }
   }
 
-  function asScatterSeries( steel ) {
-    const fillColor = steel.id.substring(0,6)
-    return <Scatter name={steel.name} data={steel.samples} fill={'#' + fillColor} line={true} lineType="fitting" />
+  function allSeries( data ) {
+
+    const scatterDatum = []
+
+    data.steel.forEach(steel => {
+
+      const steelSeriesData = []
+
+      steel.samples.forEach(sample => {
+
+        steelSeriesData.push({
+          id: sample.id,
+          name: steel.name,
+          hardness: sample.hardness,
+          temperingTemperature: sample.hardening_heat_treat.temper_temperature,
+        })
+      })
+
+      const fillColor = steel.id.substring(0, 6)
+      scatterDatum.push( 
+        <Scatter name={steel.name} data={steelSeriesData} fill={'#' + fillColor} line={true} lineType="fitting" />
+      )
+    })
+
+    return scatterDatum
+ 
   }
-  /*
-  Some alternatives
-    unit="°F" (on xaxis)
-    https://recharts.org/en-US/examples/LegendEffectOpacity - to help guide a user to the chart
-  */
+
 }
