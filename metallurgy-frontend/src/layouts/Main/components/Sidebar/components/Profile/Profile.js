@@ -27,9 +27,9 @@ const Profile = (props) => {
   const classes = useStyles();
 
   const user = {
-    name: 'Some Name',
+    name: 'Anonymous User',
     avatar: '/images/avatars/avatar_1.png',
-    bio: 'Lorem ipsum',
+    bio: 'Log in for more actions',
   };
 
   return (

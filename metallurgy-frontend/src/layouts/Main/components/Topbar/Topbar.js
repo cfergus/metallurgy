@@ -3,8 +3,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar } from '@material-ui/core';
 import palette from '../../../../theme/palette';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +50,11 @@ const Topbar = (props) => {
   return (
     <AppBar {...rest} className={clsx(classes.root, className)}>
       <Toolbar>
+
+        <IconButton onClick={onSidebarOpen}>
+          <MenuIcon />
+        </IconButton>
+
         <RouterLink to="/" className={classes.link} >
           {/* <img alt="Logo" src="/images/logo/logo.svg" /> */}
           Metal App
@@ -56,7 +62,7 @@ const Topbar = (props) => {
         <div className={classes.flexGrow} />
         <a className={classes.link} rel="noopener noreferrer" target="_blank" href="https://www.cutleafstudios.com">
           {/* <img alt="Cutleaf Studios" src="/images/cutleaf_logo.svg" /> */}
-          <span className={classes.cutleaf}>Cutleaf Studios</span>
+          <span className={classes.cutleaf}>CutLeaf Studios</span>
         </a>
        
       </Toolbar>

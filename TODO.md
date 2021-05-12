@@ -18,7 +18,7 @@ sample
   sharpenability / wear resistance
   
 Steel
-  Composition?
+  Composition? (typical chemistry, allowed deviation?)
   Tags[]
   Articles, hrefs with rel
  
@@ -26,25 +26,16 @@ Equations, such as cementite https://knifesteelnerds.com/2018/11/19/steel-edge-r
 
 # Actions
 
-Connect up test gql to graph. Make sure it stays reactive.
-  Might need to use state : https://www.apollographql.com/docs/tutorial/local-state/
-  Might need to redo the dang dependencies: https://www.apollographql.com/blog/getting-started-with-apollo-client-in-next-js/
-
 Figure out env vars
   .env.local?
   docker-compose -> docker
   build, or runtime? In dev vs prod
 
 Updates
-* frontend - warn  - React 17.0.1 or newer will be required to leverage all of the upcoming features in Next.js 11. Read more: https://err.sh/next.js/react-version
 * Use hasura 2 when released
 
 Production build
-  https://nextjs.org/docs/deployment
 
-Material UI
-  https://github.com/mui-org/material-ui/blob/master/docs/src/pages/getting-started/templates/dashboard/Dashboard.js
-  Example: https://material-ui.com/getting-started/templates/dashboard/
 
 # Vizualizations
 
