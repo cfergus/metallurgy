@@ -64,6 +64,9 @@ X: Hardness (HRC)
 Y: toughness (ft-lbs)
 Series: Aus + Temper temperatures (ie 1500 , 450 )
 
+X: Catra Edge retention (mm)
+Y: Toughhness
+
 (less common)
 X: hold time
 Y: toughness
