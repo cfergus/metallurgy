@@ -2,7 +2,7 @@ import { ScatterChart, Tooltip, CartesianGrid, XAxis, Label, YAxis, Scatter, Leg
 import './ChartGeneric.css'
 
 
-export default function TemperingHardnessChart( { data } ) {
+export default function ToughnessHardnessChart( { data } ) {
 
   const unrolledData = []
 
@@ -12,7 +12,7 @@ export default function TemperingHardnessChart( { data } ) {
         id: sample.id,
         name: steel.name,
         hardness: sample.hardness,
-        temperingTemperature: sample.hardening_heat_treat.temper_temperature,
+        toughness: sample.toughness
       } )
     } )
   } )
@@ -25,22 +25,21 @@ export default function TemperingHardnessChart( { data } ) {
       >
 
         <CartesianGrid stroke="#000000" strokeDasharray="3 3" />
-        <XAxis dataKey="temperingTemperature"
+        <XAxis dataKey="toughness"
           type="number"
           domain={['auto', 'auto']}
           tick={{ fill: "#212121" }} tickLine={{ stroke: "#000000" }}
-          unit="°F">
-          <Label value="Tempering Temperature" position="bottom" offset={0} />
+          unit="ft/lb">
+          <Label value="Toughness" position="bottom" offset={0} />
         </XAxis>
         <YAxis dataKey="hardness" unit="HRC" domain={['auto','auto']} >
           <Label value="Hardness" position="left" angle="-90" />
         </YAxis>
-        <Tooltip />
+        <Tooltip isAnimationActive={false} />
 
         {legend( data )}
         
-        {allSeries(data)}
-        
+        {data.steel.map(asScatterSeries)}
 
       </ScatterChart>
     </ResponsiveContainer>
@@ -54,32 +53,19 @@ export default function TemperingHardnessChart( { data } ) {
     }
   }
 
-  function allSeries( data ) {
-
-    const scatterDatum = []
-
-    data.steel.forEach(steel => {
-
-      const steelSeriesData = []
-
-      steel.samples.forEach(sample => {
-
-        steelSeriesData.push({
-          id: sample.id,
-          name: steel.name,
-          hardness: sample.hardness,
-          temperingTemperature: sample.hardening_heat_treat.temper_temperature,
-        })
-      })
-
-      const fillColor = steel.id.substring(0, 6)
-      scatterDatum.push( 
-        <Scatter name={steel.name} data={steelSeriesData} fill={'#' + fillColor} line={true} lineType="fitting" />
-      )
-    })
-
-    return scatterDatum
- 
+  function asScatterSeries( steel ) {
+    const fillColor = steel.id.substring(0,6)
+    return <Scatter 
+        name={steel.name} 
+        data={steel.samples} 
+        fill={'#' + fillColor} 
+        line={true} 
+        lineType="fitting"
+        isAnimationActive={false} />
   }
-
+  /*
+  Some alternatives
+    unit="°F" (on xaxis)
+    https://recharts.org/en-US/examples/LegendEffectOpacity - to help guide a user to the chart
+  */
 }

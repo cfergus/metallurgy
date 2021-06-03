@@ -3,8 +3,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Divider, Drawer } from '@material-ui/core';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import ListIcon from '@material-ui/icons/List';
 
 import { Profile, SidebarNav } from './components';
@@ -40,13 +38,11 @@ const Sidebar = (props) => {
   const pages = [
     {
       title: 'Welcome',
-      href: '/welcome',
-      icon: <DashboardIcon />,
+      href: '/welcome'
     },
     {
       title: 'Help',
-      href: '/help',
-      icon: <AssignmentIcon />,
+      href: '/help'
     },
     {
       title: 'Steel Listing',
