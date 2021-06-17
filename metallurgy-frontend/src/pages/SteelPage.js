@@ -38,6 +38,7 @@ export default function SteelPage() {
       query getSteels($steelName: String!) {
         steel(where: {name: {_eq: $steelName}}) {
           name
+          description
           id
           samples {
             id
@@ -79,22 +80,8 @@ export default function SteelPage() {
                 {steel.name}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {steel.name} description
+                {steel.description}
               </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Card>
-            <CardContent>
-              History? Chemistry?
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Card>
-            <CardContent>
-              Tags? Links to Articles?
             </CardContent>
           </Card>
         </Grid>
@@ -122,7 +109,8 @@ export default function SteelPage() {
         <Grid item xs={6}>
           <Card>
             <CardContent>
-              <p>Another radar</p>
+              <p>More resources</p>
+              <a href="https://knifesteelnerds.com/2021/03/25/cpm-magnacut/">Announcement of steel</a>
             </CardContent>
           </Card>
         </Grid>
