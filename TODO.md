@@ -1,10 +1,11 @@
-# Future build out and ideas
+# Feature build out and ideas
 
-Units - ft/lbs vs joules, C vs F temp.
-
-Enums? image types, url types
-
-Search capability, especially across Steel names
+* Units - ft/lbs vs joules, C vs F temp.
+* Images with types. Micrograph, corrosion sample, etc.
+* Search capability, especially across Steel names
+* Trend lines using splines or otherwise (line fit for scatter)
+* Filtering based on selectors, context, search, etc (see Filtering, below)
+* Consistent color for steel, etc. UUID to color? Currently hashing
 
 ## Possible new fields and relationships
 
@@ -24,28 +25,16 @@ Steel
  
 Equations, such as cementite https://knifesteelnerds.com/2018/11/19/steel-edge-retention/
 
-# Actions
+## Filtering
 
-Figure out env vars
-  .env.local?
-  docker-compose -> docker
-  build, or runtime? In dev vs prod
+For various views, how to filter to only the information of interest. Examples:
+* Stainless
+* High alloy
+* Custom group
 
-Updates
-* Use hasura 2 when released
+May want to compare A vs B as groups. Use colors to distinguish a series. 
 
-Production build
-
-
-# Vizualizations
-
-## Common charts
-
-X: Tempering temp
-Y: Toughness
-
-X: Tempering temp
-Y: Hardness
+## Charts
 
 X: Aus temper
 Y: Hardness
@@ -58,46 +47,50 @@ Series: Aus + Temper temperatures (ie 1500 , 450 )
 X: Catra Edge retention (mm)
 Y: Toughhness
 
-(less common)
+_less common_
 X: hold time
 Y: toughness
 
-Radar chart of characteristics relative to context
-
-Samples by type
 
 ## Tables
 
-Chemical composition
+* Chemical composition
+* tempering time
 
-tempering time
+## Other metrics
 
-## Features
+* Number of samples by type
 
-Trend lines using spline etc (line fit for scatter)
 
-Filtering based on selectors, context, search, etc
+# Developer Actions
 
-Consistent color for steel, etc. UUID to color?
+## Env
 
-# Filtering
+Figure out env vars
+  .env.local?
+  docker-compose -> docker
+  build, or runtime? In dev vs prod
 
-For various views, how to filter to only the information of interest. Examples:
-* Stainless
-* High alloy
-* Custom group
+Updates
+* Use hasura 2 when released
 
-May want to compare A vs B as groups. Use colors to distinguish a series. 
+Production build
 
-Suggest tag arrays for steel types
+## Input
 
-# Input
+How should new data be inserted and managed?
 
 For start, use hasura console
 Later, could try to recreate console style? Ex: https://github.com/hasura/graphql-engine/tree/master/console/src/components/Services/Data/TableInsertItem
 
-Otherwise, a custom form
+Otherwise, a custom form could be created to simplify input
 
-# DEV ideas
+Consider backup, export, and other aspects.
 
-Typescript for frontend? https://nextjs.org/docs/basic-features/typescript
+## Bugs
+
+* Hide menu button when full screen, or change behavior
+
+## Tech and dependencies
+
+* Typescript for frontend? https://nextjs.org/docs/basic-features/typescript
